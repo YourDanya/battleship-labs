@@ -1,0 +1,18 @@
+C:\Users\АндрійПопов\Desktop\battleship-labs-main\BattleshipProgramm\bin\Debug\ConsoleApplication1.exe
+C:\Users\АндрійПопов\Desktop\battleship-labs-main\BattleshipProgramm\bin\Debug\ConsoleApplication1.pdb
+C:\Users\АндрійПопов\Desktop\battleship-labs-main\BattleshipProgramm\obj\Debug\BattleshipProgramm.csprojAssemblyReference.cache
+C:\Users\АндрійПопов\Desktop\battleship-labs-main\BattleshipProgramm\obj\Debug\BattleshipProgramm.csproj.CoreCompileInputs.cache
+C:\Users\АндрійПопов\Desktop\battleship-labs-main\BattleshipProgramm\obj\Debug\ConsoleApplication1.exe
+C:\Users\АндрійПопов\Desktop\battleship-labs-main\BattleshipProgramm\obj\Debug\ConsoleApplication1.pdb
+D:\Downloads\Telegram Desktop\battleship-labs-main (3)\BattleshipProgramm\bin\Debug\ConsoleApplication1.exe
+D:\Downloads\Telegram Desktop\battleship-labs-main (3)\BattleshipProgramm\bin\Debug\ConsoleApplication1.pdb
+D:\Downloads\Telegram Desktop\battleship-labs-main (3)\BattleshipProgramm\obj\Debug\BattleshipProgramm.csproj.AssemblyReference.cache
+D:\Downloads\Telegram Desktop\battleship-labs-main (3)\BattleshipProgramm\obj\Debug\BattleshipProgramm.csproj.CoreCompileInputs.cache
+D:\Downloads\Telegram Desktop\battleship-labs-main (3)\BattleshipProgramm\obj\Debug\ConsoleApplication1.exe
+D:\Downloads\Telegram Desktop\battleship-labs-main (3)\BattleshipProgramm\obj\Debug\ConsoleApplication1.pdb
+D:\University\OOP\Lab\3.0\BattleshipProgramm\bin\Debug\ConsoleApplication1.exe
+D:\University\OOP\Lab\3.0\BattleshipProgramm\bin\Debug\ConsoleApplication1.pdb
+D:\University\OOP\Lab\3.0\BattleshipProgramm\obj\Debug\BattleshipProgramm.csproj.AssemblyReference.cache
+D:\University\OOP\Lab\3.0\BattleshipProgramm\obj\Debug\BattleshipProgramm.csproj.CoreCompileInputs.cache
+D:\University\OOP\Lab\3.0\BattleshipProgramm\obj\Debug\ConsoleApplication1.exe
+D:\University\OOP\Lab\3.0\BattleshipProgramm\obj\Debug\ConsoleApplication1.pdb
