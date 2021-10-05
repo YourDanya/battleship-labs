@@ -49,7 +49,54 @@ namespace ConsoleApplication1
             
             
         }
+        //public void AutoGenerate()
+        //{
+        //    Random random = new Random();
+        //    int x1, y1, x2, y2;
+        //    for (int i = 4; i > 0; i--)
+        //    {
+        //        for (int j = 4 - i; j >= 0; j--)
+        //        {
+        //            do
+        //            {
+        //                if (Convert.ToBoolean(random.Next(2)))
+        //                {
+        //                    x1 = random.Next(Width - i);
+        //                    x2 = x1 + i - 1;
+        //                    y1 = y2 = random.Next(Height);
+        //                }
+        //                else
+        //                {
+        //                    x1 = x2 = random.Next(Height);
+        //                    y1 = random.Next(Width - i);
+        //                    y2 = y1 + i - 1;
+        //                }
+        //            } while (!AddShip(i, x1, y1, x2, y2));
+        //        }
+        //    }
+        //}
 
+        //public void Render()
+        //{
+        //    for (int i = 0; i < Height; i++)
+        //    {
+        //        for (int j = 0; j < Width; j++)
+        //        {
+        //            Console.Write("+---");
+        //        }
+        //        Console.WriteLine("+");
+        //        for (int j = 0; j < Width; j++)
+        //        {
+        //            Console.Write("| " + FieldCells[i, j].Sign + " ");
+        //        }
+        //        Console.WriteLine("|");
+        //    }
+        //    for (int j = 0; j < Width; j++)
+        //    {
+        //        Console.Write("+---");
+        //    }
+        //    Console.WriteLine("+");
+        //}
         public void AutoGenerate()
         {
             
