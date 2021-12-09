@@ -7,15 +7,14 @@ namespace ConsoleApplication1
         public static void Main(string[] args)
         {
             Console.WriteLine("Play Game!");
-            BattleField battleField=new BattleField(10, 10);
+            BattleField battleField = new BattleField(autoGenerate: true);
+            Bot bot = new Bot(battleField);
             battleField.Render();
-            battleField.AddShip(2, 0,0,0,1);
-            battleField.Hit(0,0);
-            battleField.Render();
-            battleField.Hit(0,1);
-            battleField.Render();
-            battleField.Hit(1,0);
-            battleField.Render();
+            for (int i = 0; i < 80; i++)
+            {
+                bot.Shot();
+                battleField.Render();
+            }
         }
     }
 }

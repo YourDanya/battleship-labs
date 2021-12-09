@@ -3,26 +3,17 @@ namespace ConsoleApplication1
 {
     public class Ship
     {
-        private int life;
-        private int size;
+        public int Life { get; private set; }
+        public int Size { get; }
+
         public Ship(int size)
         {
-            this.life = size;
-            this.size = size;
-        }
-        public int GetLife()
-        {
-            return this.life;
+            this.Life = this.Size = size;
         }
         
-        public int GetSize()
-        {
-            return this.size;
-        }
         public void DecreaseLife()
         {
-            this.life--;
+            this.Life--;
         }
-
     }
 }

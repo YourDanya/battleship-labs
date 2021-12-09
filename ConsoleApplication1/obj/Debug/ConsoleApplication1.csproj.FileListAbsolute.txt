@@ -4,3 +4,9 @@ C:\Users\Home\RiderProjects\ConsoleApplication1\ConsoleApplication1\obj\Debug\Co
 C:\Users\Home\RiderProjects\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csproj.CoreCompileInputs.cache
 C:\Users\Home\RiderProjects\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
 C:\Users\Home\RiderProjects\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+A:\folder\battleship-labs\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+A:\folder\battleship-labs\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+A:\folder\battleship-labs\ConsoleApplication1\obj\Debug\ConsoleApplication1.csproj.AssemblyReference.cache
+A:\folder\battleship-labs\ConsoleApplication1\obj\Debug\ConsoleApplication1.csproj.CoreCompileInputs.cache
+A:\folder\battleship-labs\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+A:\folder\battleship-labs\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb

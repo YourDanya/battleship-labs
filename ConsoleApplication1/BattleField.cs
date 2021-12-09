@@ -1,179 +1,166 @@
-﻿using System;
+﻿﻿using System;
 
 namespace ConsoleApplication1
 {
-    public class BattleField
+      public class BattleField
     {
-        private int size=0;
-        private int width=0;
-        private int height=0;
-        private int ones=0;
-        private int twos=0;
-        private int threes=0;
-        private int fours=0;
-        public FieldCell[,] fieldCells;
+        public static int Width { get; private set; }
+        public static int Height { get; private set; }
+        private int[] Ships;
+        public FieldCell[,] FieldCells;
 
-        public BattleField(int height, int width, int ones, int twos, int threes, int fours, bool autoGenerate)
+        public BattleField(bool autoGenerate = false)
         {
-            this.size = width*height;
-            if (ones + twos * 2 + threes * 3 + fours * 4 > size)
+            Width = Height = 10;
+            Ships = new int[4];
+            FieldCells = new FieldCell[Height, Width];
+            for (int i = 0; i < Height; i++)
             {
-                return;
-            }
-
-            this.height = height;
-            this.width = width;
-            this.ones = ones;
-            this.twos = twos;
-            this.threes = threes;
-            this.fours = fours;
-
-            this.fieldCells = new FieldCell[height, width];
-
-        }
-
-        public BattleField(int height, int width)
-        {
-            this.height = height;
-            this.width = width;
-            this.size = width*height;
-            this.fieldCells = new FieldCell[height, width];
-
-            for (int i = 0; i < height; i++)
-            {
-                for (int j = 0; j < width; j++)
+                for (int j = 0; j < Width; j++)
                 {
-                    fieldCells[i, j]=new FieldCell();
+                    FieldCells[i, j] = new FieldCell();
                 }
             }
-            
-            
+            if (autoGenerate)
+            {
+                AutoGenerate();
+            }
         }
 
         public void AutoGenerate()
         {
-            
+            Random random = new Random();
+            int x1, y1, x2, y2;
+            for (int i = 4; i > 0; i--)
+            {
+                for (int j = 4 - i; j >= 0; j--)
+                {
+                    do
+                    {
+                        if (Convert.ToBoolean(random.Next(2)))
+                        {
+                            x1 = random.Next(Width - i);
+                            x2 = x1 + i - 1;
+                            y1 = y2 = random.Next(Height);
+                        }
+                        else
+                        {
+                            x1 = x2 = random.Next(Height);
+                            y1 = random.Next(Width - i);
+                            y2 = y1 + i - 1;
+                        }
+                    } while (!AddShip(i, x1, y1, x2, y2));
+                }
+            }
         }
 
         public void Render()
         {
-            for (int i = 0; i<height; i++)
+            for (int i = 0; i < Height; i++)
             {
-                for (int j = 0; j < width; j++)
+                for (int j = 0; j < Width; j++)
                 {
-                    Console.Write(fieldCells[i,j].GetSign()+"  ");
+                    Console.Write("+---");
                 }
-                Console.WriteLine();
+                Console.WriteLine("+");
+                for (int j = 0; j < Width; j++)
+                {
+                    Console.Write("| " + FieldCells[i, j].Sign + " ");
+                }
+                Console.WriteLine("|");
             }
+            for (int j = 0; j < Width; j++)
+            {
+                Console.Write("+---");
+            }
+            Console.WriteLine("+");
         }
-        
-        public void Hit(int y, int x)
+
+        public int Hit(int y, int x)
         {
-            int res=this.fieldCells[y,x].Hit();
+            int res = FieldCells[y, x].Hit();
             switch (res)
             {
-                case -1: 
-                    Console.WriteLine("miss");
+                case -1:
+                    Console.WriteLine("Miss...");
                     break;
                 case 0:
-                    Console.WriteLine("hit");
+                    Console.WriteLine("Hit!");
                     break;
-                case 1: 
-                    this.ones--;
-                    Console.WriteLine("killed ship with size one");
+                case 1:
+                    Ships[0]--;
+                    Console.WriteLine("Killed ship with size one!");
                     break;
-                case 2: 
-                    this.twos--;
-                    Console.WriteLine("killed ship with size two");
+                case 2:
+                    Ships[1]--;
+                    Console.WriteLine("Killed ship with size two!");
                     break;
-                case 3: 
-                    this.threes--;
-                    Console.WriteLine("killed ship with size three");
+                case 3:
+                    Ships[2]--;
+                    Console.WriteLine("Killed ship with size three!");
                     break;
-                case 4: 
-                    this.fours--;
-                    Console.WriteLine("killed ship with size four");
+                case 4:
+                    Ships[3]--;
+                    Console.WriteLine("Killed ship with size four!");
                     break;
             }
+            return res;
         }
 
         public bool CheckPlace(int size, int x1, int y1, int x2, int y2)
         {
-            if (x1>=this.width || x2>=this.width|| y1>=this.height|| y2>=this.height||
-                x1<0 ||x2<0 || y1<0|| y2<0||
-                (x1!=x2 && y1!=y2)|| size-1!= Math.Round(Math.Sqrt(Math.Pow(x2-x1,2)+Math.Pow(y2-y1,2))))
+            if (x1 >= Width || x2 >= Width || y1 >= Height || y2 >= Height || x1 < 0 || x2 < 0 || y1 < 0 || y2 < 0 ||
+                (x1 != x2 && y1 != y2) || (size - 1 != Math.Abs(x1 - x2) && size - 1 != Math.Abs(y1 - y2)))
             {
                 Console.WriteLine("Wrong coordinates or ship size!");
                 return false;
             }
-            
-            
-            if (x1 == x2)
+
+            if (Ships[size - 1] == 4 - size + 1)
             {
-                for (int i = y1; i <=y2; i++)
-                {
-                    if (fieldCells[i, x1].isShip)
-                    {
-                        Console.WriteLine("You are trying to add a ship to the place with existed ship");
-                        return false;
-                    }
-                }
-            } 
-            else
+                Console.WriteLine("All ships of this size have already been added!");
+                return false;
+            }
+
+            int xStart = Math.Max(Math.Min(x1 - 1, x2 - 1), 0);
+            int xEnd = Math.Min(Math.Max(x1 + 1, x2 + 1), Height - 1);
+            int yStart = Math.Max(Math.Min(y1 - 1, y2 - 1), 0);
+            int yEnd = Math.Min(Math.Max(y1 + 1, y2 + 1), Width - 1);
+
+            for (int i = xStart; i <= xEnd; i++)
             {
-                for (int i = x1; i <=x2; i++)
+                for (int j = yStart; j <= yEnd; j++)
                 {
-                    if (fieldCells[y1, i].isShip)
+                    if (FieldCells[j, i].IsShip)
                     {
-                        Console.WriteLine("You are trying to add a ship to the place with existed ship");
+                        Console.WriteLine("In this place we have a ship!");
                         return false;
                     }
                 }
             }
-            
+
             return true;
         }
-        
-        public void AddShip(int size, int x1, int y1, int x2, int y2)
+
+        public bool AddShip(int size, int x1, int y1, int x2, int y2)
         {
 
-            if (!CheckPlace(size, x1, y1, x2, y2)) return;
-            
+            if (!CheckPlace(size, x1, y1, x2, y2)) return false;
+
             Ship ship = new Ship(size);
-             if (x1 == x2)
+            for (int i = Math.Min(x1, x2); i <= Math.Max(x1, x2); i++)
             {
-                for (int i = y1; i <=y2; i++)
+                for (int j = Math.Min(y1, y2); j <= Math.Max(y1, y2); j++)
                 {
-                    fieldCells[i,x1].Add(ship);
-                }
-            } 
-            else
-            {
-                for (int i = x1; i <=x2; i++)
-                {
-                    fieldCells[y1,i].Add(ship);
+                    FieldCells[j, i].Add(ship);
                 }
             }
 
-            switch (size)
-             {
-               case 1: 
-                   this.ones++;
-                   break;
-               case 2: 
-                   this.twos++;
-                   break;
-               case 3: 
-                   this.threes++;
-                   break;
-               case 4: 
-                   this.fours++;
-                   break;
-             }
-             
+            Ships[size - 1]++;
+
             Console.WriteLine("Ship added to the battlefield");
-        
+            return true;
+
         }
-        
     }
 }

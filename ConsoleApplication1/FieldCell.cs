@@ -4,51 +4,42 @@ namespace ConsoleApplication1
 {
     public class FieldCell
     {
-        private char sign;
-        public bool isShip;
-        public Ship ship;
+        public char Sign { get; private set; }
+        public bool IsShip;
+        public Ship Ship;
+
         public FieldCell()
         {
-            this.sign = '*';
-            this.isShip = false;
-        }
-
-        public char GetSign()
-        {
-            return this.sign;
+            Sign = ' ';
+            IsShip = false;
         }
 
         public int Hit()
         {
-            if (this.isShip)
+            if (IsShip)
             {
-                this.sign = 'x';
-                this.isShip = false;
-                this.ship.DecreaseLife();
-                return this.ship.GetLife()==0 ? this.ship.GetSize(): 0;
+                Sign = 'x';
+                IsShip = false;
+                Ship.DecreaseLife();
+                return Ship.Life == 0 ? Ship.Size : 0;
             }
             else
             {
+                Sign = '-';
                 return -1;
             }
         }
-        
+
         public bool Add(Ship ship)
         {
-            
-            if(!this.isShip)
+            if (!IsShip)
             {
-                this.ship = ship;
-                this.isShip = true;
+                Ship = ship;
+                IsShip = true;
                 return true;
             }
-            
-            else
-            {
-                return false;
-            }
+            return false;
         }
-        
     }
     
 }

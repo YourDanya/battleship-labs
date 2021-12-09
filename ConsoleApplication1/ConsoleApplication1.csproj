@@ -39,6 +39,7 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="BattleField.cs" />
+        <Compile Include="Bot.cs" />
         <Compile Include="FieldCell.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
